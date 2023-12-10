@@ -1,4 +1,4 @@
 # DevSecOps Documentation
 
 List Tools
-<li>Ubuntu</li>
+<li>Ubuntu Server</li>

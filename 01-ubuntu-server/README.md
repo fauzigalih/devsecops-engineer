@@ -1,7 +1,7 @@
 # Ubuntu Server Documentation
 
-Note:
-symbol $ = access without user root
+Note:<br>
+symbol $ = access without user root<br>
 symbol # = access with user root
 
 ## Basic Security on Linux Server

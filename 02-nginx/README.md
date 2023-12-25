@@ -8,6 +8,9 @@ $ = user without root<br>
 List:
 * [Install Nginx Basic](#install-nginx-basic)
 * [Install Nginx via Docker](#install-nginx-via-docker)
+* [Nginx Proxy Configuration](#nginx-proxy-configuration)
+* [Nginx Php Fpm Configuration](#nginx-php-fpm-configuration)
+* [Redirect Http to Https](#redirect-http-to-https)
 * [Install ModSecurity on Nginx (Nginx WAF)](#install-modsecurity-on-nginx-nginx-waf)
 
 ## Install Nginx Basic
@@ -48,6 +51,113 @@ $ docker ps | grep nginx
 config file on container, in path `/etc/nginx/conf.d/`:
 ```
 $ docker exec -it nginx /bin/sh
+```
+
+## Nginx Proxy Configuration
+create config file:
+```
+# cd /etc/nginx/sites-available/proxy
+```
+
+example configuration for port proxy:
+```
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name sub.domain.com;
+
+        location / {
+                proxy_pass http://localhost:3000;
+        }
+}
+```
+
+create symlink:
+```
+# ln -s /etc/nginx/sites-available/proxy /etc/nginx/sites-enabled/
+```
+
+restart service nginx:
+```
+# systemctl restart nginx
+```
+
+## Nginx Php Fpm Configuration
+create config file:
+```
+# cd /etc/nginx/sites-available/app
+```
+
+example configuration for application use php-fpm:
+```
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/app;
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        server_name sub.domain.com;
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+}
+```
+
+create symlink:
+```
+# ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled/
+```
+
+restart service nginx:
+```
+# systemctl restart nginx
+```
+
+## Redirect Http to Https
+create config file:
+```
+# cd /etc/nginx/sites-available/redirect
+```
+
+example configuration for application use php-fpm:
+```
+server {
+        listen 80;
+        listen [::]:80;
+        server_name sub.domain.com;
+        return 301 https://sub.domain.com$request_uri;
+}
+server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+
+        root /var/www/app;
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        server_name sub.domain.com;
+
+        ssl_certificate        /etc/nginx/ssl/ssl.crt;
+        ssl_certificate_key    /etc/nginx/ssl/ssl.key;
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+}
+```
+
+create symlink:
+```
+# ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+```
+
+restart service nginx:
+```
+# systemctl restart nginx
 ```
 
 ## Install ModSecurity on Nginx (Nginx WAF)

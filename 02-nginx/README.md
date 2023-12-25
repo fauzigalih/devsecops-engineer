@@ -8,7 +8,7 @@ $ = user without root<br>
 List:
 * [Install Nginx Basic](#install-nginx-basic)
 * [Install Nginx via Docker](#install-nginx-via-docker)
-* [Install ModSecurity on Nginx (Nginx WAF)](#install-nginx-basic)
+* [Install ModSecurity on Nginx (Nginx WAF)](#install-modsecurity-on-nginx-nginx-waf)
 
 ## Install Nginx Basic
 update package ubuntu:

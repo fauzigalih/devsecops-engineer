@@ -5,10 +5,10 @@ Use linux ubuntu<br>
 $ = user without root<br>
 \# = user with root<br>
 
-List:<br>
-<a href="https://github.com/fauzigalih/devsecops-engineer/edit/main/02-nginx/README.md#install-nginx-basic">Install Nginx Basic</a><br>
-<a href="https://github.com/fauzigalih/devsecops-engineer/edit/main/02-nginx/README.md#install-nginx-via-docker">Install Nginx via Docker</a><br>
-<a href="https://github.com/fauzigalih/devsecops-engineer/edit/main/02-nginx/README.md#install-nginx-basic">Install ModSecurity on Nginx (Nginx WAF)</a><br>
+List:
+* [Install Nginx Basic](#install-nginx-basic)
+* [Install Nginx via Docker](#install-nginx-via-docker)
+* [Install ModSecurity on Nginx (Nginx WAF)](#install-nginx-basic)
 
 ## Install Nginx Basic
 update package ubuntu:

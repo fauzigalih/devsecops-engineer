@@ -116,3 +116,16 @@ Show detail commit by id:
 ```
 # git show id_commit
 ```
+
+Compare git commit:
+```
+# git diff id_commit_old id_commit_new
+# git diff 7e68cc0 HEAD
+```
+
+Compare git commit via text editor:
+```
+# git difftool id_commit_old id_commit_new
+# git difftool 7e68cc0 HEAD
+```
+

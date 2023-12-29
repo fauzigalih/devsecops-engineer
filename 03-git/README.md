@@ -129,3 +129,13 @@ Compare git commit via text editor:
 # git difftool 7e68cc0 HEAD
 ```
 
+Rename file:
+```
+# mv filename filename1
+# git add filename
+# git add filename1
+# git status
+# git commit -m "rename filename to filename1" 
+```
+
+Git reset 

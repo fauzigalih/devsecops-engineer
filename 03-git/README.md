@@ -138,4 +138,56 @@ Rename file:
 # git commit -m "rename filename to filename1" 
 ```
 
-Git reset 
+Git reset:
+`--soft` move HEAD pointer, but don't change in staging index and working directory:
+```
+# git log --oneline
+# git reset --soft 7e68cc0
+# git log --oneline
+# git status
+
+how to back to last HEAD again, example 1e08cc5 is last HEAD:
+# git reset --soft 1e08cc5
+# git status --oneline
+```
+
+`--mixed (default)` move HEAD pointer, changed staging index to repository, but don't change in working directory:
+```
+# git log --oneline
+# git reset --mixed 7e68cc0
+# git log --oneline
+# git status
+
+how to back to last HEAD again, example 1e08cc5 is last HEAD:
+# git reset --mixed 1e08cc5
+# git status --oneline
+```
+
+`--hard` move HEAD pointer, changed staging index and working directory to repository:
+```
+# git log --oneline
+# git reset --hard 7e68cc0
+# git log --oneline
+# git status
+
+how to back to last HEAD again, example 1e08cc5 is last HEAD:
+# git reset --hard 1e08cc5
+# git status --oneline
+```
+
+Git ammend commit, is re-commit the previous commit:
+```
+# git log --oneline
+# touch newfile
+# git status
+# git add newfile
+# git commit --ammend -m "re-commit previous commit"
+# git log --oneline
+```
+
+Git checkout, we can see previous version commit with specified file:
+```
+# git log --oneline
+# git checkout 7e68cc0 -- filename
+```
+

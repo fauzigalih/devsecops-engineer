@@ -185,9 +185,59 @@ Git ammend commit, is re-commit the previous commit:
 # git log --oneline
 ```
 
-Git checkout, we can see previous version commit with specified file:
+Git checkout (snapshot), we can see previous version commit with specified file:
 ```
 # git log --oneline
 # git checkout 7e68cc0 -- filename
+
+how to back to last HEAD again, example 1e08cc5 is last HEAD:
+# git status
+# git restore --staged filename
+# git restore filename
+# git status
 ```
 
+Git checkout (snapshot), we can see previous version commit with all file:
+```
+# git branch --show-current
+# git log --oneline
+# git checkout 7e68cc0
+
+how to back to last HEAD again, example 1e08cc5 is last HEAD:
+# git branch --show-current
+# git checkout master
+# git log --oneline
+```
+
+Git revert commit, create new commit with rollback file before commit was made:
+```
+# git log --oneline
+# git revert 7e68cc0
+
+you will display file COMMIT_EDITMSG, edit save and close the file with continue revert commit process.
+
+# git log --oneline
+```
+
+Git ignore, add name file or name folder to not track on file `.gitignore`:
+```
+# touch .gitignore
+# nano .gitignore
+
+example .gitignore:
+
+# This is comment
+# ignore filename
+filename.txt
+*.backup
+config/.env
+
+# ignore folder
+newfolder/
+```
+
+Git blame, see people create commit and show commit:
+```
+# git blame filename
+# git show 7e68cc0
+```

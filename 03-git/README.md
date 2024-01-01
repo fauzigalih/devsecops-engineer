@@ -241,3 +241,12 @@ Git blame, see people create commit and show commit:
 # git blame filename
 # git show 7e68cc0
 ```
+
+Git alias:
+```
+# git config --global alias.co commit
+example: git co -m "fixing display flex list"
+
+# git config --global alias.logone "log --oneline"
+example: git logone
+```
